@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
+import { ThemeProvider } from "styled-components/native";
 
 import {
   useFonts,
@@ -12,6 +13,8 @@ import {
 
 import { DMSans_400Regular } from "@expo-google-fonts/dm-sans";
 import { DMSerifDisplay_400Regular } from "@expo-google-fonts/dm-serif-display";
+
+import COLORS from "../src/styles/theme";
 
 const App: React.FC = () => {
   const [fontsLoaded] = useFonts({
@@ -28,15 +31,17 @@ const App: React.FC = () => {
     return null;
   }
   return (
-    <View
-      style={{
-        alignItems: "center",
-        justifyContent: "center",
-        flex: 1,
-      }}
-    >
-      <Text>Wallet App</Text>
-    </View>
+    <ThemeProvider theme={COLORS}>
+      <View
+        style={{
+          alignItems: "center",
+          justifyContent: "center",
+          flex: 1,
+        }}
+      >
+        <Text>Wallet App</Text>
+      </View>
+    </ThemeProvider>
   );
 };
 
