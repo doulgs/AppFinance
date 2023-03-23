@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.ScrollView`
+  background-color: ${({ theme }) => theme.COLORS.WHITE};
   padding: ${RFValue(25)}px;
   flex: 1;
 `;
@@ -22,10 +23,10 @@ export const ViewButton = styled.View`
 export const Title = styled.Text`
   text-align: center;
   font-size: ${RFValue(25)}px;
-  margin-top: ${RFValue(40)}px;
   font-family: ${({ theme }) => theme.FONTS.POPPINSMEDIUM};
 `;
 export const Description = styled.Text`
+  text-align: center;
   margin-top: ${RFValue(60)}px;
   font-size: ${RFValue(15)}px;
   font-family: ${({ theme }) => theme.FONTS.POPPINSLIGHT};

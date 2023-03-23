@@ -24,7 +24,7 @@ const Register: React.FC = () => {
   return (
     <Container>
       <ContentHeader>
-        <Title>BEM VINDO {`\n`} ao App Carteira</Title>
+        <Title>Crie sua conta {`\n`}no App Carteira</Title>
 
         <Description>Entrar com redes sociais</Description>
 
@@ -65,7 +65,7 @@ const Register: React.FC = () => {
         <Button title="Acessar" onPress={() => console.log("test")} />
         <LinkContainer>
           <LinkText>
-            Já possui uma conta ainda?
+            Já possui uma conta?
             <Text style={{ color: "blue" }}>Acessar</Text>
           </LinkText>
         </LinkContainer>

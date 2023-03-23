@@ -2,10 +2,10 @@ import React from "react";
 import { useTheme } from "styled-components/native";
 import { KeyboardAvoidingView, Text } from "react-native";
 
+import { useNavigation } from "@react-navigation/native";
+
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import { ButtonSocial } from "../../components/ButtonSocial/ButtonSocial";
-import { ButtonSocialGoogle } from "../../components/ButtonSocialGoogle/ButtonSocialGoogle";
 
 import {
   Container,
@@ -21,17 +21,18 @@ import {
 
 const Login: React.FC = () => {
   const { COLORS } = useTheme();
+  const navigation = useNavigation();
+
+  function handleSignUp() {
+    navigation.navigate("Register");
+  }
+
   return (
     <Container>
       <ContentHeader>
         <Title>BEM VINDO {`\n`} ao App Carteira</Title>
 
-        <Description>Entrar com redes sociais</Description>
-
-        <ViewButton>
-          <ButtonSocialGoogle title="Google" />
-          <ButtonSocial title="Facebook" iconName="facebook" />
-        </ViewButton>
+        <Description>Acesse sua conta de forma simple e rapida</Description>
       </ContentHeader>
 
       <ContentBody>
@@ -56,7 +57,7 @@ const Login: React.FC = () => {
       </ContentBody>
       <ContentFooter>
         <Button title="Acessar" onPress={() => console.log("test")} />
-        <LinkContainer>
+        <LinkContainer onPress={handleSignUp}>
           <LinkText>
             Não tem uma conta ainda?
             <Text style={{ color: "blue" }}>Registrar-se</Text>
