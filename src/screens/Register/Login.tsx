@@ -19,7 +19,7 @@ import {
   LinkText,
 } from "./styles";
 
-const Login: React.FC = () => {
+const Register: React.FC = () => {
   const { COLORS } = useTheme();
   return (
     <Container>
@@ -35,6 +35,13 @@ const Login: React.FC = () => {
       </ContentHeader>
 
       <ContentBody>
+        <Input
+          placeholder="User"
+          LeftIcon
+          iconNameLeft="mail"
+          iconSize={25}
+          iconColor={COLORS.GRAY3}
+        />
         <Input
           placeholder="Email"
           LeftIcon
@@ -58,8 +65,8 @@ const Login: React.FC = () => {
         <Button title="Acessar" onPress={() => console.log("test")} />
         <LinkContainer>
           <LinkText>
-            Não tem uma conta ainda?
-            <Text style={{ color: "blue" }}>Registrar-se</Text>
+            Já possui uma conta ainda?
+            <Text style={{ color: "blue" }}>Acessar</Text>
           </LinkText>
         </LinkContainer>
       </ContentFooter>
@@ -67,4 +74,4 @@ const Login: React.FC = () => {
   );
 };
 
-export { Login };
+export { Register };
