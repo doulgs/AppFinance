@@ -2,10 +2,8 @@ import React from "react";
 import { useTheme } from "styled-components/native";
 import { KeyboardAvoidingView, Text } from "react-native";
 
-import { useNavigation } from "@react-navigation/native";
-
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import { ButtonSocial } from "../../../components/ButtonSocial/ButtonSocial";
+import { ButtonSocialGoogle } from "../../../components/ButtonSocialGoogle/ButtonSocialGoogle";
 
 import {
   Container,
@@ -19,23 +17,32 @@ import {
   LinkText,
 } from "./styles";
 
-const Login: React.FC = () => {
+import Input from "../../../components/Input";
+import Button from "../../../components/Button";
+
+const Register: React.FC = () => {
   const { COLORS } = useTheme();
-  const navigation = useNavigation();
-
-  function handleSignUp() {
-    navigation.navigate("Register");
-  }
-
   return (
     <Container>
       <ContentHeader>
-        <Title>BEM VINDO {`\n`} ao App Carteira</Title>
+        <Title>Crie sua conta {`\n`}no App Carteira</Title>
 
-        <Description>Acesse sua conta de forma simple e rapida</Description>
+        <Description>Entrar com redes sociais</Description>
+
+        <ViewButton>
+          <ButtonSocialGoogle title="Google" />
+          <ButtonSocial title="Facebook" iconName="facebook" />
+        </ViewButton>
       </ContentHeader>
 
       <ContentBody>
+        <Input
+          placeholder="User"
+          LeftIcon
+          iconNameLeft="mail"
+          iconSize={25}
+          iconColor={COLORS.GRAY3}
+        />
         <Input
           placeholder="Email"
           LeftIcon
@@ -57,10 +64,10 @@ const Login: React.FC = () => {
       </ContentBody>
       <ContentFooter>
         <Button title="Acessar" onPress={() => console.log("test")} />
-        <LinkContainer onPress={handleSignUp}>
+        <LinkContainer>
           <LinkText>
-            Não tem uma conta ainda?
-            <Text style={{ color: "blue" }}>Registrar-se</Text>
+            Já possui uma conta?
+            <Text style={{ color: "blue" }}>Acessar</Text>
           </LinkText>
         </LinkContainer>
       </ContentFooter>
@@ -68,4 +75,4 @@ const Login: React.FC = () => {
   );
 };
 
-export { Login };
+export { Register };
