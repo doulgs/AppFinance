@@ -5,7 +5,7 @@ export default {
     BLACK: "#100C08",
     GRAY_100: "#B8B8B8",
     ICON: "#666666",
-    WHITE: "#FFFFFF",
+    WHITE: "#FAFAFA",
     TITLE: "#363F5F",
     SHAPE: "#f4ede8",
     PRIMARY: "#1DC18B",
