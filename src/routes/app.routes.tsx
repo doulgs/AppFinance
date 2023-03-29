@@ -1,49 +1,39 @@
 import React from "react";
+
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { Home } from "../screens/Home";
-import { Graphic } from "../screens/Graphic";
-import { Notifications } from "../screens/Notifications";
-import { Setting } from "../screens/Setting";
+import { TouchableOpacity } from "react-native";
 
-import {
-  HomeIcon,
-  HomeFillIcon,
-  GraphicIcon,
-  GraphicFillIcon,
-  NotifiIcon,
-  NotifiFillIcon,
-  SettingsIcon,
-  SettingsFillIcon,
-} from "../utils/IconsSvg";
+import { Ionicons } from "@expo/vector-icons";
+
+import Home from "../screens/Home";
+import { Tela1, Tela2, Tela3, Tela4 } from "../utils/MockScreens";
+import { IconTabRoute } from "../components/IconTabRoute";
 import { useTheme } from "styled-components/native";
-import { Login } from "../screens/Auth/Login/Login";
 
+const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function AppRoutes() {
+function TabRoutes() {
   const { COLORS } = useTheme();
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarActiveTintColor: COLORS.WHITE,
-        tabBarInactiveTintColor: COLORS.GRAY4,
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: COLORS.PURPLEDARK3,
-
-          position: "absolute",
-          borderTopWidth: 0,
-          height: 78,
-          width: 327,
-          bottom: 32,
-          left: 32,
-          borderRadius: 32,
           elevation: 0,
+          position: "absolute",
+          height: 60,
+          borderTopWidth: 0,
+          borderTopRightRadius: 30,
+          borderTopLeftRadius: 30,
         },
+        tabBarActiveTintColor: COLORS.PURPLE,
+        tabBarInactiveTintColor: COLORS.GRAY1,
       })}
     >
       <Tab.Screen
@@ -51,54 +41,114 @@ function AppRoutes() {
         component={Home}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
-            return focused ? (
-              <HomeFillIcon fill={color} width={size} height={size} />
-            ) : (
-              <HomeIcon fill={color} width={size} height={size} />
+            return (
+              <IconTabRoute
+                iconName="home"
+                color={color}
+                size={size}
+                focused={focused}
+              />
             );
           },
         }}
       />
       <Tab.Screen
-        name="Graphic"
-        component={Graphic}
+        name="Tela2"
+        component={Tela2}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
-            return focused ? (
-              <GraphicFillIcon fill={color} width={size} height={size} />
-            ) : (
-              <GraphicIcon fill={color} width={size} height={size} />
+            return (
+              <IconTabRoute
+                iconName="pulse"
+                color={color}
+                size={size}
+                focused={focused}
+              />
+            );
+          },
+        }}
+      />
+      {/* <Tab.Screen name="HomeTab" component={Home} /> */}
+      <Tab.Screen
+        name="Tela3"
+        component={Tela3}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => {
+            return (
+              <IconTabRoute
+                iconName="quote"
+                color={color}
+                size={size}
+                focused={focused}
+              />
             );
           },
         }}
       />
       <Tab.Screen
-        name="Notification"
-        component={Notifications}
+        name="Tela4"
+        component={Tela4}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
-            return focused ? (
-              <NotifiFillIcon fill={color} width={size} height={size} />
-            ) : (
-              <NotifiIcon fill={color} width={size} height={size} />
-            );
-          },
-        }}
-      />
-      <Tab.Screen
-        name="Setting"
-        component={Setting}
-        options={{
-          tabBarIcon: ({ focused, color, size }) => {
-            return focused ? (
-              <SettingsFillIcon fill={color} width={size} height={size} />
-            ) : (
-              <SettingsIcon fill={color} width={size} height={size} />
+            return (
+              <IconTabRoute
+                iconName="person"
+                color={color}
+                size={size}
+                focused={focused}
+              />
             );
           },
         }}
       />
     </Tab.Navigator>
+  );
+}
+
+function DrawerRoutes() {
+  return (
+    <Drawer.Navigator
+      initialRouteName="DrawerHome"
+      screenOptions={({ navigation }) => ({
+        headerTitleAlign: "center",
+        headerLeftContainerStyle: { paddingLeft: 20 },
+        headerRightContainerStyle: { paddingRight: 20 },
+        headerStyle: {
+          backgroundColor: "transparent",
+          elevation: 0,
+        },
+        headerLeft: (props) => {
+          return (
+            <TouchableOpacity onPress={() => navigation.openDrawer()}>
+              <Ionicons name="md-menu-outline" size={27} color="black" />
+            </TouchableOpacity>
+          );
+        },
+        headerRight: (props) => {
+          return (
+            <Ionicons name="notifications-outline" size={25} color="black" />
+          );
+        },
+      })}
+    >
+      <Drawer.Screen
+        name="DrawerHome"
+        component={TabRoutes}
+        options={{ headerTitle: "Inicio" }}
+      />
+    </Drawer.Navigator>
+  );
+}
+
+function AppRoutes() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="StackHome" component={DrawerRoutes} />
+    </Stack.Navigator>
   );
 }
 

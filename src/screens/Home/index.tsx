@@ -1,37 +1,22 @@
 import React from "react";
-
+import BankCard from "../../components/IconTabRoute/BankCard";
 import {
-  CHeader,
   Container,
-  ContentBody,
-  ContentHeader,
-  Profile,
-  ProfileIcon,
-  SubTitle,
-  Title,
+  Salutation,
+  SalutationTitle,
+  SalutationSubTitle,
 } from "./styles";
-
-import UserImage from "../../assets/ProfileUser.jpg";
-import CardBalance from "../../components/CardBalance";
 
 const Home: React.FC = () => {
   return (
     <Container>
-      <ContentHeader>
-        <CHeader>
-          <Title>Olá, Bom Dia</Title>
-          <SubTitle>Active</SubTitle>
-        </CHeader>
-        <ProfileIcon>
-          <Profile source={UserImage} resizeMode="contain" />
-        </ProfileIcon>
-      </ContentHeader>
-
-      <ContentBody>
-        <CardBalance />
-      </ContentBody>
+      <Salutation>
+        <SalutationTitle>Olá, Douglas Domiciano</SalutationTitle>
+        <SalutationSubTitle>Bem vindo de volta</SalutationSubTitle>
+      </Salutation>
+      <BankCard />
     </Container>
   );
 };
 
-export { Home };
+export default Home;

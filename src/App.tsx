@@ -37,7 +37,7 @@ const App: React.FC = () => {
     <ThemeProvider theme={COLORS}>
       <StatusBar
         style="dark"
-        translucent={false}
+        translucent={true}
         backgroundColor="transparent"
       />
       <Routes />
